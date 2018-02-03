@@ -68,7 +68,7 @@ function StartRespawnToHospitalMenuTimer()
         'default', GetCurrentResourceName(), 'menuName',
         {
           title = _U('respawn_at_hospital'),
-          align = 'top-left',
+          align = 'bottom-right',
           elements = elements
         },
         function(data, menu) --Submit Cb
@@ -269,6 +269,7 @@ function OpenAmbulanceActionsMenu()
     'default', GetCurrentResourceName(), 'ambulance_actions',
     {
       title    = _U('ambulance'),
+	  align    = 'bottom-right',
       elements = elements
     },
     function(data, menu)
@@ -305,6 +306,7 @@ function OpenMobileAmbulanceActionsMenu()
     'default', GetCurrentResourceName(), 'mobile_ambulance_actions',
     {
       title    = _U('ambulance'),
+	  align    = 'bottom-right',
       elements = {
         {label = _U('ems_menu'), value = 'citizen_interaction'},
       }
@@ -317,6 +319,7 @@ function OpenMobileAmbulanceActionsMenu()
           'default', GetCurrentResourceName(), 'citizen_interaction',
           {
             title    = _U('ems_menu_title'),
+			align    = 'bottom-right',
             elements = {
               {label = _U('ems_menu_revive'),     value = 'revive'},
                             {label = _U('ems_menu_small'),      value = 'small'},
@@ -438,7 +441,7 @@ function OpenCloakroomMenu()
     'default', GetCurrentResourceName(), 'cloakroom',
     {
       title    = _U('cloakroom'),
-      align    = 'top-left',
+      align    = 'bottom-right',
       elements = {
         {label = _U('ems_clothes_civil'), value = 'citizen_wear'},
         {label = _U('ems_clothes_ems'), value = 'ambulance_wear'},
@@ -500,7 +503,7 @@ function OpenVehicleSpawnerMenu()
         'default', GetCurrentResourceName(), 'vehicle_spawner',
         {
           title    = _U('veh_menu'),
-          align    = 'top-left',
+          align    = 'bottom-right',
           elements = elements,
         },
         function(data, menu)
@@ -537,7 +540,7 @@ function OpenVehicleSpawnerMenu()
       'default', GetCurrentResourceName(), 'vehicle_spawner',
       {
         title    = _U('veh_menu'),
-        align    = 'top-left',
+        align    = 'bottom-right',
         elements = {
           {label = _U('ambulance'),  value = 'ambulance'}
         },
@@ -569,7 +572,7 @@ function OpenPharmacyMenu()
         'default', GetCurrentResourceName(), 'pharmacy',
         {
             title    = _U('pharmacy_menu_title'),
-            align    = 'top-left',
+            align    = 'bottom-right',
             elements = {
                 {label = _U('pharmacy_take') .. ' ' .. _('medikit'),  value = 'medikit'},
                 {label = _U('pharmacy_take') .. ' ' .. _('bandage'),  value = 'bandage'}

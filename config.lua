@@ -12,9 +12,9 @@ Config.RespawnDelayAfterRPDeath   = 10 * minute
 -- The player is not obliged to select YES, but he will be auto respawn
 -- at the end of RespawnDelayAfterRPDeath just above.
 Config.RespawnToHospitalMenuTimer   = true
-Config.MenuRespawnToHospitalDelay   = 5 * minute
+Config.MenuRespawnToHospitalDelay   = 2 * minute
 
-Config.EnablePlayerManagement       = false
+Config.EnablePlayerManagement       = true
 Config.EnableSocietyOwnedVehicles   = false
 
 Config.RemoveWeaponsAfterRPDeath    = true
@@ -30,7 +30,7 @@ Config.EarlyRespawn                 = false
 Config.RespawnFine                  = false
 Config.RespawnFineAmount            = 500
 
-Config.Locale                       = 'fr'
+Config.Locale                       = 'en'
 
 Config.Blip = {
   Pos     = { x = 307.76, y = -1433.47, z = 28.97 },
@@ -53,8 +53,9 @@ Config.Zones = {
     Type = 1
   },
 
-  HospitalInteriorInside1 = { -- ok
+  HospitalInteriorInside1 = { -- respawn area
     Pos  = { x = 272.8, y = -1358.8, z = 23.5 },
+	-- Pos  = { x = -269.21926879883, y = -956.79595947266, z = 31.223134994507 },
     Size = { x = 1.5, y = 1.5, z = 1.0 },
     Type = -1
   },
