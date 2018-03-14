@@ -349,11 +349,7 @@ function OpenMobileAmbulanceActionsMenu()
 								if GetEntityHealth(closestPlayerPed) == 0 then
 									TriggerServerEvent('esx_ambulancejob:removeItem', 'medikit')
 									TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
-									ESX.ShowNotification(_U('revive_complete'), GetPlayerName(closestPlayer))
-									
-									local _source = source
-									local xPlayer = ESX.GetPlayerFromId(_source)
-									xPlayer.addMoney(2000)
+									ESX.ShowNotification(_U('revive_complete', GetPlayerName(closestPlayer)))
 								else
 									ESX.ShowNotification(_U('isdead'))
 								end

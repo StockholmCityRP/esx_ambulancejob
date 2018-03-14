@@ -4,7 +4,11 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(target)
-  TriggerClientEvent('esx_ambulancejob:revive', target)
+	local _source = source
+	
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.addMoney(2000)
+	TriggerClientEvent('esx_ambulancejob:revive', target)
 end)
 
 RegisterServerEvent('esx_ambulancejob:heal')
@@ -91,14 +95,16 @@ end)
 
 
 TriggerEvent('es:addGroupCommand', 'revive', 'admin', function(source, args, user)
-  print('esx_ambulancejob: ' .. GetPlayerName(source) .. ' is reviving a player!')
-  if args[1] ~= nil then
-    TriggerClientEvent('esx_ambulancejob:revive', tonumber(args[1]))
-  else
-    TriggerClientEvent('esx_ambulancejob:revive', source)
-  end
+	print('esx_ambulancejob: ' .. GetPlayerName(source) .. ' is reviving a player!')
+	if args[1] ~= nil then
+		if GetPlayerName(tonumber(args[1])) ~= nil then
+			TriggerClientEvent('esx_ambulancejob:revive', tonumber(args[1]))
+		end
+	else
+		TriggerClientEvent('esx_ambulancejob:revive', source)
+	end
 end, function(source, args, user)
-  TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
+	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
 end, {help = _U('revive_help'), params = {{name = 'id'}}})
 
 ESX.RegisterUsableItem('medikit', function(source)
