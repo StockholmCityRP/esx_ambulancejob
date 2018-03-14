@@ -320,11 +320,11 @@ function OpenMobileAmbulanceActionsMenu()
           {
             title    = _U('ems_menu_title'),
 			align    = 'bottom-right',
-            elements = {
-              {label = _U('ems_menu_revive'),     value = 'revive'},
-                            {label = _U('ems_menu_small'),      value = 'small'},
-                            {label = _U('ems_menu_big'),        value = 'big'},
-              {label = _U('ems_menu_putincar'),   value = 'put_in_vehicle'},
+            elements = { 
+				{label = _U('ems_menu_revive'),     value = 'revive'},
+                {label = _U('ems_menu_small'),      value = 'small'},
+                {label = _U('ems_menu_big'),        value = 'big'},
+                {label = _U('ems_menu_putincar'),   value = 'put_in_vehicle'},
             }
           },
           function(data, menu)
@@ -335,32 +335,36 @@ function OpenMobileAmbulanceActionsMenu()
               if closestPlayer == -1 or closestDistance > 3.0 then
                 ESX.ShowNotification(_U('no_players'))
               else
-                                ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty)
-                                    if qtty > 0 then
-                        local closestPlayerPed = GetPlayerPed(closestPlayer)
-                        local health = GetEntityHealth(closestPlayerPed)
-                        if health == 0 then
-                            local playerPed = GetPlayerPed(-1)
-                            Citizen.CreateThread(function()
-                              ESX.ShowNotification(_U('revive_inprogress'))
-                              TaskStartScenarioInPlace(playerPed, 'CODE_HUMAN_MEDIC_TEND_TO_DEAD', 0, true)
-                              Wait(10000)
-                              ClearPedTasks(playerPed)
-                              if GetEntityHealth(closestPlayerPed) == 0 then
-                                                    TriggerServerEvent('esx_ambulancejob:removeItem', 'medikit')
-                                TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
-                                ESX.ShowNotification(_U('revive_complete'))
-                              else
-                                ESX.ShowNotification(_U('isdead'))
-                              end
-                            end)
-                        else
-                          ESX.ShowNotification(_U('unconscious'))
-                        end
-                                    else
-                                        ESX.ShowNotification(_U('not_enough_medikit'))
-                                    end
-                                end, 'medikit')
+                ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty)
+					if qtty > 0 then
+						local closestPlayerPed = GetPlayerPed(closestPlayer)
+						local health = GetEntityHealth(closestPlayerPed)
+						if health == 0 then
+							local playerPed = GetPlayerPed(-1)
+							Citizen.CreateThread(function()
+								ESX.ShowNotification(_U('revive_inprogress'))
+								TaskStartScenarioInPlace(playerPed, 'CODE_HUMAN_MEDIC_TEND_TO_DEAD', 0, true)
+								Wait(10000)
+								ClearPedTasks(playerPed)
+								if GetEntityHealth(closestPlayerPed) == 0 then
+									TriggerServerEvent('esx_ambulancejob:removeItem', 'medikit')
+									TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
+									ESX.ShowNotification(_U('revive_complete'), GetPlayerName(closestPlayer))
+									
+									local _source = source
+									local xPlayer = ESX.GetPlayerFromId(_source)
+									xPlayer.addMoney(2000)
+								else
+									ESX.ShowNotification(_U('isdead'))
+								end
+							end)
+						else
+							ESX.ShowNotification(_U('unconscious'))
+						end
+					else
+						ESX.ShowNotification(_U('not_enough_medikit'))
+					end
+				end, 'medikit')
               end
             end
 

@@ -12,7 +12,7 @@ Locales['sv'] = {
   -- Action Menu
   ['hospital'] = 'Sjukhus',
   ['revive_inprogress'] = 'Återupplivning pågår...',
-  ['revive_complete'] = 'Du har blivit återupplivad ',
+  ['revive_complete'] = 'Du har återupplivat ~y~%s~w~ och tjärnat ~g~$700~w~ i processen, bra jobbat!',
   ['no_players'] = 'Inga spelare i närheten!',
   ['no_vehicles'] = 'Inga fordon i närheten!',
   ['isdead'] = 'är död',
