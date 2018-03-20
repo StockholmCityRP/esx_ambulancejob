@@ -543,7 +543,7 @@ function OpenVehicleSpawnerMenu()
         align    = 'bottom-right',
         elements = {
           {label = _U('ambulance'),  value = 'ambulance'},
-		  {label = 'Volvo V70 EMS', value = 'policeold2'}
+		  {label = 'Akutbil', value = 'sheriff2'}
         },
       },
       function(data, menu)
