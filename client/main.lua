@@ -688,13 +688,13 @@ AddEventHandler('esx_ambulancejob:hasEnteredMarker', function(zone)
 
         if not IsAnyVehicleNearPoint(heli.SpawnPoint.x, heli.SpawnPoint.y, heli.SpawnPoint.z, 3.0)
             and PlayerData.job ~= nil and PlayerData.job.name == 'ambulance' then
-            ESX.Game.SpawnVehicle('polmav', {
+            ESX.Game.SpawnVehicle('supervolito2', {
                 x = heli.SpawnPoint.x,
                 y = heli.SpawnPoint.y,
                 z = heli.SpawnPoint.z
             }, heli.Heading, function(vehicle)
                 SetVehicleModKit(vehicle, 0)
-                SetVehicleLivery(vehicle, 1)
+                SetVehicleLivery(vehicle, 0)
             end)
 
         end
