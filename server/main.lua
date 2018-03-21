@@ -6,7 +6,7 @@ RegisterServerEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function(target)
 	local _source = source
 	
-	local xPlayer = ESX.GetPlayerFromId(source)
+	local xPlayer = ESX.GetPlayerFromId(_source)
 	xPlayer.addMoney(2000)
 	TriggerClientEvent('esx_ambulancejob:revive', target)
 end)

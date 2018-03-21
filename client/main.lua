@@ -818,7 +818,7 @@ end)
 -- Activate menu when player is inside marker
 Citizen.CreateThread(function()
   while true do
-    Wait(0)
+    Citizen.Wait(10)
     local coords      = GetEntityCoords(GetPlayerPed(-1))
     local isInMarker  = false
     local currentZone = nil
@@ -852,7 +852,7 @@ end)
 Citizen.CreateThread(function()
   while true do
 
-    Citizen.Wait(0)
+    Citizen.Wait(10)
 
     if CurrentAction ~= nil then
 
@@ -870,9 +870,9 @@ Citizen.CreateThread(function()
           OpenVehicleSpawnerMenu()
         end
 
-                if CurrentAction == 'pharmacy' then
-                    OpenPharmacyMenu()
-                end
+        if CurrentAction == 'pharmacy' then
+          OpenPharmacyMenu()
+         end
 
                 if CurrentAction == 'fast_travel_goto_top' or CurrentAction == 'fast_travel_goto_bottom' then
                     FastTravel(CurrentActionData.pos)
